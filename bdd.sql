@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS Commandes;
-DROP TABLE IF EXISTS Users;
-DROP TABLE IF EXISTS Produits;
+DROP TABLE IF EXISTS Commandes cascade;
+DROP TABLE IF EXISTS Users cascade;
+DROP TABLE IF EXISTS Produits cascade;
 
 CREATE TABLE Users
 (	IdUser int primary key,
