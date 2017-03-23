@@ -110,8 +110,11 @@ public class User implements Principal {
     }
 
     public void initFromDto(UserDto dto) {
-        this.setAlias(dto.getAlias());
+        this.setPrenom(dto.getPrenom());
         this.setEmail(dto.getEmail());
+        this.setAddress(dto.getAddress());
+        this.setTel(dto.getTel());
+        this.setRole(dto.getRole());
         this.setId(dto.getId());
         this.setName(dto.getName());
         this.setPassword(dto.getPassword());
@@ -119,8 +122,11 @@ public class User implements Principal {
 
     public UserDto convertToDto() {
         UserDto dto = new UserDto();
-        dto.setAlias(this.getAlias());
+        dto.setPrenom(this.getPrenom());
         dto.setEmail(this.getEmail());
+        dto.setAddress(this.getAddress());
+        dto.setTel(this.getTel());
+        dto.setRole(this.getRole());
         dto.setId(this.getId());
         dto.setName(this.getName());
         dto.setPassword(this.getPassword());
@@ -171,12 +177,12 @@ public class User implements Principal {
     public void setPasswdHash(String passwdHash) {
         this.passwdHash = passwdHash;
     }
-    public String getAlias() {
+    public String getPrenom() {
         return prenom;
     }
 
-    public void setAlias(String alias) {
-        this.prenom = alias;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
     public String getSalt() {
         if (salt == null) {
@@ -189,4 +195,36 @@ public class User implements Principal {
         this.salt = salt;
     }
 
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+    
 }
