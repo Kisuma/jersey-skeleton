@@ -20,6 +20,7 @@ public class User implements Principal {
     private String address;
     private String tel;
     private String role;
+    private int nbCommandes;
     private String password;
     private String passwdHash;
     private String salt;
@@ -76,7 +77,7 @@ public class User implements Principal {
     @Override
 	public String toString() {
 		return "User [nom=" + nom + ", prenom=" + prenom + ", id=" + id + ", email=" + email + ", address=" + address
-				+ ", tel=" + tel + ", role=" + role + "]";
+				+ ", tel=" + tel + ", role=" + role + ", nbCommandes=" + nbCommandes+ "]";
 	}
 
     private String generateSalt() {
