@@ -10,14 +10,15 @@ Il faut finir de créer les tables.
 
 ## PDCA 
 ### Qu'avons nous testé durant ce sprint ? 
-tenté d'utilisé UserDao 
+tenté d'utilisé UserDao. finis la géolocalisation et la page d'acceuill
 ### Qu'avons nous observé ? 
 Le squelette de base possède pleins de technologies differentes.
 
 ### Quelle décision prenons nous suite à cette expérience ? 
 
 ### Qu'allons nous tester durant les 2 prochaines heures ? 
-
+Corriger les classes de tests. créer les pages d'inform
+ations comme les conditions generales.
 
 ### À quoi verra-t-on que celà a fonctionné ?
 
