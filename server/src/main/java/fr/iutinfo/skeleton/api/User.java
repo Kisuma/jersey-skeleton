@@ -13,14 +13,10 @@ import java.security.SecureRandom;
 public class User implements Principal {
     final static Logger logger = LoggerFactory.getLogger(User.class);
     private static User anonymous = new User(-1, "Anonymous", "anonym");
-    private String nom;
-    private String prenom;
+    private String name;
+    private String alias;
     private int id = 0;
     private String email;
-    private String address;
-    private String tel;
-    private String role;
-    private int nbCommandes;
     private String password;
     private String passwdHash;
     private String salt;
@@ -28,28 +24,53 @@ public class User implements Principal {
 
     public User(int id, String name) {
         this.id = id;
-        this.nom = name;
+        this.name = name;
     }
 
-    public User(int id, String name, String prenom) {
+    public User(int id, String name, String alias) {
         this.id = id;
-        this.nom = name;
-        this.prenom=prenom;
+        this.name = name;
+        this.alias = alias;
     }
-    
 
-    public User(String nom, String prenom, int id, String email, String address, String tel, String role) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.id = id;
-		this.email = email;
-		this.address = address;
-		this.tel = tel;
-		this.role = role;
-	}
+    public User() {
+    }
 
-	public User() {
+    public static User getAnonymousUser() {
+        return anonymous;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        passwdHash = buildHash(password, getSalt());
+        this.password = password;
     }
 
     private String buildHash(String password, String s) {
@@ -66,19 +87,45 @@ public class User implements Principal {
         return hash.equals(getPasswdHash());
     }
 
+    public String getPasswdHash() {
+        return passwdHash;
+    }
+
+    public void setPasswdHash(String passwdHash) {
+        this.passwdHash = passwdHash;
+    }
+
     @Override
     public boolean equals(Object arg) {
         if (getClass() != arg.getClass())
             return false;
         User user = (User) arg;
-        return nom.equals(user.nom) && prenom.equals(user.prenom) && email.equals(user.email) && address.equals(user.address) && tel.equals(tel) && role.equals(user.role) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
+        return name.equals(user.name) && alias.equals(user.alias) && email.equals(user.email) && passwdHash.equals(user.getPasswdHash()) && salt.equals((user.getSalt()));
     }
 
     @Override
-	public String toString() {
-		return "User [nom=" + nom + ", prenom=" + prenom + ", id=" + id + ", email=" + email + ", address=" + address
-				+ ", tel=" + tel + ", role=" + role + ", nbCommandes=" + nbCommandes+ "]";
-	}
+    public String toString() {
+        return id + ": " + alias + ", " + name + " <" + email + ">";
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    public String getSalt() {
+        if (salt == null) {
+            salt = generateSalt();
+        }
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
+    }
 
     private String generateSalt() {
         SecureRandom random = new SecureRandom();
@@ -102,7 +149,7 @@ public class User implements Principal {
     }
 
     public String getSearch() {
-        search = nom + " " + prenom + " " + email;
+        search = name + " " + alias + " " + email;
         return search;
     }
 
@@ -111,11 +158,8 @@ public class User implements Principal {
     }
 
     public void initFromDto(UserDto dto) {
-        this.setPrenom(dto.getPrenom());
+        this.setAlias(dto.getAlias());
         this.setEmail(dto.getEmail());
-        this.setAddress(dto.getAddress());
-        this.setTel(dto.getTel());
-        this.setRole(dto.getRole());
         this.setId(dto.getId());
         this.setName(dto.getName());
         this.setPassword(dto.getPassword());
@@ -123,109 +167,11 @@ public class User implements Principal {
 
     public UserDto convertToDto() {
         UserDto dto = new UserDto();
-        dto.setPrenom(this.getPrenom());
+        dto.setAlias(this.getAlias());
         dto.setEmail(this.getEmail());
-        dto.setAddress(this.getAddress());
-        dto.setTel(this.getTel());
-        dto.setRole(this.getRole());
         dto.setId(this.getId());
         dto.setName(this.getName());
         dto.setPassword(this.getPassword());
         return dto;
     }
-
-    //***********GETTERS SETTERS***********
-    public static User getAnonymousUser() {
-        return anonymous;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return nom;
-    }
-
-    public void setName(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPassword() {
-        return this.password;
-    }
-
-    public void setPassword(String password) {
-        passwdHash = buildHash(password, getSalt());
-        this.password = password;
-    }
-    public String getPasswdHash() {
-        return passwdHash;
-    }
-
-    public void setPasswdHash(String passwdHash) {
-        this.passwdHash = passwdHash;
-    }
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
-    public String getSalt() {
-        if (salt == null) {
-            salt = generateSalt();
-        }
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
-
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-    
 }
