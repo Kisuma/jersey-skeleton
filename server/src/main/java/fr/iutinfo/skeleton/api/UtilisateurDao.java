@@ -1,40 +1,44 @@
 package fr.iutinfo.skeleton.api;
 
-import org.skife.jdbi.v2.sqlobject.*;
+import java.util.List;
+
+import org.skife.jdbi.v2.sqlobject.Bind;
+import org.skife.jdbi.v2.sqlobject.BindBean;
+import org.skife.jdbi.v2.sqlobject.GetGeneratedKeys;
+import org.skife.jdbi.v2.sqlobject.SqlQuery;
+import org.skife.jdbi.v2.sqlobject.SqlUpdate;
 import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
-import java.util.List;
-
 public interface UtilisateurDao {
-    @SqlUpdate("create table users (id integer primary key autoincrement, nom varchar(100), prenom varchar(100), email varchar(100),address varchar(100),tel varchar(10), role varchar(50),nbCommandes int, passwdHash varchar(64), salt varchar(64), search varchar(1024))")
-    void createUserTable();
+    @SqlUpdate("create table utilisateur(iduser integer autoincrement, nom varchar(100), prenom varchar(100), email varchar(100),address varchar(100),tel varchar(10), role varchar(50),nbCommandes int, passwdHash varchar(64), salt varchar(64), search varchar(1024), primary key(iduser)")
+    void createUtilisateurTable();
 
-    @SqlUpdate("insert into users (nom,prenom, email,address,tel,role,nbCommandes, passwdHash, salt, search) values (:nom, :prenom, :email, :address, :tel, :role, :nbCommandes, :passwdHash, :salt, :search)")
+    @SqlUpdate("insert into utilisateur(nom,prenom, email,address,tel,role,nbCommandes, passwdHash, salt, search) values (:nom, :prenom, :email, :address, :tel, :role, :nbCommandes, :passwdHash, :salt, :search)")
     @GetGeneratedKeys
-    int insert(@BindBean() User user);
+    int insert(@BindBean() Utilisateur user);
 
-    @SqlQuery("select * from users where email = :email")
+    @SqlQuery("select * from utilisateurs where email = :email")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    User findByName(@Bind("email") String name);
+    Utilisateur findByName(@Bind("email") String name);
 
-    @SqlQuery("select * from users where search like :email")
+    @SqlQuery("select * from utilisateurs where search like :email")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    List<User> search(@Bind("email") String name);
+    List<Utilisateur> search(@Bind("email") String name);
 
-    @SqlUpdate("drop table if exists users")
-    void dropUserTable();
+    @SqlUpdate("drop table if exists utilisateurs")
+    void dropUtilisateurTable();
 
-    @SqlUpdate("delete from users where id = :id")
+    @SqlUpdate("delete from utilisateurs where id = :id")
     void delete(@Bind("id") int id);
 
-    @SqlQuery("select * from users order by id")
+    @SqlQuery("select * from utilisateurs order by id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    List<User> all();
+    List<Utilisateur> all();
 
-    @SqlQuery("select * from users where id = :id")
+    @SqlQuery("select * from utilisateurs where id = :id")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    User findById(@Bind("id") int id);
+    Utilisateur findById(@Bind("id") int id);
 
     void close();
 }

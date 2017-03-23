@@ -1,15 +1,16 @@
 package fr.iutinfo.skeleton.api;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
-import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
+import java.security.Principal;
+import java.security.SecureRandom;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.Principal;
-import java.security.SecureRandom;
+import com.google.common.base.Charsets;
+import com.google.common.hash.Hasher;
+import com.google.common.hash.Hashing;
+
+import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
 public class Utilisateur implements Principal {
     final static Logger logger = LoggerFactory.getLogger(Utilisateur.class);
@@ -94,7 +95,7 @@ public class Utilisateur implements Principal {
         }
     }
 
-    public boolean isInUserGroup() {
+    public boolean isInUtilisateurGroup() {
         return !(id == anonymous.getId());
     }
 

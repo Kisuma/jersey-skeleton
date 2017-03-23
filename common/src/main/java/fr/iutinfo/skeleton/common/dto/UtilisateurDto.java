@@ -1,9 +1,9 @@
 package fr.iutinfo.skeleton.common.dto;
 
+import java.security.Principal;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.security.Principal;
 
 public class UtilisateurDto implements Principal {
     final static Logger logger = LoggerFactory.getLogger(UtilisateurDto.class);
