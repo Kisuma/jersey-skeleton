@@ -7,13 +7,10 @@ import java.security.Principal;
 
 public class UserDto implements Principal {
     final static Logger logger = LoggerFactory.getLogger(UserDto.class);
-    private String nom;
-    private String prenom;
+    private String name;
+    private String alias;
     private int id = 0;
     private String email;
-    private String address;
-    private String tel;
-    private String role;
     private String password;
 
     public String getEmail() {
@@ -33,11 +30,11 @@ public class UserDto implements Principal {
     }
 
     public String getName() {
-        return nom;
+        return name;
     }
 
     public void setName(String name) {
-        this.nom = name;
+        this.name = name;
     }
 
     public String getPassword() {
@@ -48,43 +45,12 @@ public class UserDto implements Principal {
         this.password = password;
     }
 
-    public String getPrenom() {
-        return prenom;
+    public String getAlias() {
+        return alias;
     }
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
-	public String getNom() {
-		return nom;
-	}
-
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
 }

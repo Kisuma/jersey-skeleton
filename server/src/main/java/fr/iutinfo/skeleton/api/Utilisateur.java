@@ -3,7 +3,8 @@ package fr.iutinfo.skeleton.api;
 import com.google.common.base.Charsets;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
-import fr.iutinfo.skeleton.common.dto.UserDto;
+import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -110,7 +111,7 @@ public class Utilisateur implements Principal {
         this.search = search;
     }
 
-    public void initFromDto(UserDto dto) {
+    public void initFromDto(UtilisateurDto dto) {
         this.setPrenom(dto.getPrenom());
         this.setEmail(dto.getEmail());
         this.setAddress(dto.getAddress());
@@ -121,8 +122,8 @@ public class Utilisateur implements Principal {
         this.setPassword(dto.getPassword());
     }
 
-    public UserDto convertToDto() {
-        UserDto dto = new UserDto();
+    public UtilisateurDto convertToDto() {
+        UtilisateurDto dto = new UtilisateurDto();
         dto.setPrenom(this.getPrenom());
         dto.setEmail(this.getEmail());
         dto.setAddress(this.getAddress());
