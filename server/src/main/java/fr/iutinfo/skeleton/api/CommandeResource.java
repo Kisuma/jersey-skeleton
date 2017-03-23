@@ -60,15 +60,6 @@ public class CommandeResource {
 	}
 	
 	@GET
-	@Path("/{nbcommande}")
-	public CommandeDto getCommande(@PathParam("nbcommande") int nbcommande){
-		Commande commande = dao.findByNBCommande(nbcommande);
-		if(commande == null)
-			throw new WebApplicationException(404);
-		return commande.convertToDto();
-	}
-	
-	@GET
 	public List<CommandeDto> getAllCommandes(@QueryParam("q") Timestamp date){
 		List<Commande> commandes;
 		if(date == null){
