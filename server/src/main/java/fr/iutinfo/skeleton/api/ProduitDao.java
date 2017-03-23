@@ -7,10 +7,10 @@ import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 import java.util.List;
 
 public interface ProduitDao {
-    @SqlUpdate("create table produits(id integer primary key autoincrement, name varchar(100),description varchar(100),prix float,allergies varchar(100),stock int, search varchar(1024))")
+    @SqlUpdate("create table produits(idproduit integer primary key autoincrement, name varchar(100),description varchar(100),prix float,allergies varchar(100),stock int, search varchar(1024))")
     void createProduitTable();
 
-    @SqlUpdate("Insert into Produits(name,description,prix,allergies,stock,search) values (:name, :description,:prix,:allergies,:stock, :search)")
+    @SqlUpdate("Insert into produits(name,description,prix,allergies,stock,search) values (:name, :description,:prix,:allergies,:stock, :search)")
     @GetGeneratedKeys
     int insert(@BindBean() Produit produit);
 

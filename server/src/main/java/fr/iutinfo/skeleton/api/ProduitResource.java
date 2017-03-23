@@ -21,10 +21,10 @@ public class ProduitResource {
     private static ProduitDao dao = getDbi().open(ProduitDao.class);
 
     public ProduitResource() throws SQLException {
-        if (!tableExist("produit")) {
-            logger.debug("Crate table produit");
+        if (!tableExist("produits")) {
+            logger.debug("Create table produits");
             dao.createProduitTable();
-            dao.insert(new Produit(0, "Margaret Thatcher", "la Dame de fer"));
+            dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en."));
         }
     }
 

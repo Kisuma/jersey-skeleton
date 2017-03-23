@@ -51,7 +51,7 @@ public class UtilisateurResource {
     @GET
     @Path("/{email}")
     public UtilisateurDto getUtilisateur(@PathParam("email") String email) {
-        Utilisateur user = dao.findByName(email);
+        Utilisateur user = dao.findByMail(email);
         if (user == null) {
             throw new WebApplicationException(404);
         }

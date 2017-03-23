@@ -1,13 +1,11 @@
 package fr.iutinfo.skeleton.api;
 
-import java.security.Principal;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.ProduitDto;
 
-public class Produit implements Principal {
+public class Produit{
     final static Logger logger = LoggerFactory.getLogger(Produit.class);
     private static Produit anonymous = new Produit(-1, "Anonymous", "anonym");
     private int id = 0;

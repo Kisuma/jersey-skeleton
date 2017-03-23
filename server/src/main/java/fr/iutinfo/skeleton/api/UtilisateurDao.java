@@ -20,11 +20,11 @@ public interface UtilisateurDao {
 
     @SqlQuery("select * from utilisateurs where email = :email")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Utilisateur findByName(@Bind("email") String name);
+    Utilisateur findByMail(@Bind("email") String email);
 
     @SqlQuery("select * from utilisateurs where search like :email")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    List<Utilisateur> search(@Bind("email") String name);
+    List<Utilisateur> search(@Bind("email") String email);
 
     @SqlUpdate("drop table if exists utilisateurs")
     void dropUtilisateurTable();
