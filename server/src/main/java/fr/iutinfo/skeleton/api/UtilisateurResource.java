@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.iutinfo.skeleton.common.dto.UtilisateurDto;
 
-@Path("/user")
+@Path("/utilisateur")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class UtilisateurResource {
