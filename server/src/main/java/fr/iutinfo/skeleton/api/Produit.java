@@ -1,19 +1,13 @@
 package fr.iutinfo.skeleton.api;
 
-<<<<<<< HEAD
 import fr.iutinfo.skeleton.common.dto.ProduitDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.security.Principal;
-=======
 import java.security.Principal;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import fr.iutinfo.skeleton.common.dto.ProduitDto;
->>>>>>> abd5a71161e898e1de5d3da22f31b164abb3a11a
 
 public class Produit implements Principal {
     final static Logger logger = LoggerFactory.getLogger(Produit.class);
