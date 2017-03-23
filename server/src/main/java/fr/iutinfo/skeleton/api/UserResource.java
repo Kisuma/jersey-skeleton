@@ -39,9 +39,9 @@ public class UserResource {
     }
 
     @GET
-    @Path("/{name}")
-    public UserDto getUser(@PathParam("name") String name) {
-        User user = dao.findByName(name);
+    @Path("/{email}")
+    public UserDto getUser(@PathParam("email") String email) {
+        User user = dao.findByName(email);
         if (user == null) {
             throw new WebApplicationException(404);
         }
