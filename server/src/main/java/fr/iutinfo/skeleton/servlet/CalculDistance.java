@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sound.midi.ControllerEventListener;
 
-@WebServlet("/Serv_Connexion")
+@WebServlet("/CalculDistance")
 public class CalculDistance extends HttpServlet {
 
 	public static void main (String [] args) {
@@ -21,7 +21,7 @@ public class CalculDistance extends HttpServlet {
 		System.setProperty("http.proxyPort", "3128");
 		
 		String to = "107 rue Gaston Baratte Villeneuve d'ascq";
-		String test = "50 rue du marché Lille";
+		String test = "33 place Beaulieu Lomme";
 		
 
 		String locationV[] = requeteCoord(to);
@@ -72,8 +72,8 @@ public class CalculDistance extends HttpServlet {
 			String coordonnees[]= new String[2];
 			
 			while ((inputLine = in.readLine()) != null) {
-				coordonnees[0] = inputLine.substring(inputLine.indexOf("\"lat\"")+7,inputLine.indexOf("\"lat\"")+17);
-				coordonnees[1] = inputLine.substring(inputLine.indexOf("\"lon\"")+7,inputLine.indexOf("\"lon\"")+16);
+				coordonnees[0] = inputLine.substring(inputLine.indexOf("\"lat\"")+7,inputLine.indexOf("\"lat\"")+15);
+				coordonnees[1] = inputLine.substring(inputLine.indexOf("\"lon\"")+7,inputLine.indexOf("\"lon\"")+14);
 
 				
 			}
