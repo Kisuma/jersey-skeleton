@@ -1,14 +1,10 @@
 package fr.iutinfo.skeleton.api;
 
-import com.google.common.base.Charsets;
-import com.google.common.hash.Hasher;
-import com.google.common.hash.Hashing;
 import fr.iutinfo.skeleton.common.dto.ProduitDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.security.Principal;
-import java.security.SecureRandom;
 
 public class Produit implements Principal {
     final static Logger logger = LoggerFactory.getLogger(Produit.class);
@@ -77,12 +73,20 @@ public class Produit implements Principal {
     public void initFromDto(ProduitDto dto) {
         this.setId(dto.getId());
         this.setName(dto.getName());
+        this.setDescription(dto.getDescription());
+        this.setAllergies(dto.getAllergies());
+        this.setPrix(dto.getPrix());
+        this.setStock(dto.getStock());
     }
 
     public ProduitDto convertToDto() {
         ProduitDto dto = new ProduitDto();
         dto.setId(this.getId());
         dto.setName(this.getName());
+        dto.setAllergies(this.getAllergies());
+        dto.setDescription(this.getDescription());
+        dto.setPrix(this.getPrix());
+        dto.setStock(this.getStock());
         return dto;
     }
 
