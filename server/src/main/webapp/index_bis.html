@@ -23,7 +23,8 @@
 				<!-- <h1>Bienvenue sur Mimoosa !</h1>-->
 				<a id="ongletAccueil" href="#"><img src="img/logo.jpg"
 					alt="Logo de Mimoosa" /></a>
-				<h4>Phrase d'accroche.</h4>
+				<h4 align="center">Egayer votre déjeuner</h4>
+				<div id="zone"></div>
 			</div>
 		</div>
 	</header>
@@ -40,6 +41,8 @@
 						<li><a id="ongletMenus" href="#">Cette semaine</a></li>
 						<li><a id="ongletSupplements" href="#">Les suppléments</a></li>
 						<li><a id="ongletAllergenes" href="#">Allergènes</a></li>
+						<li><a id="ongletAjoutProduit" href="#">Ajouter un
+								produit</a></li>
 					</ul></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
@@ -148,7 +151,64 @@
 			</p>
 		</div>
 
+		<div class="cache" id="nouveauMenu">
+			<div id="ajoutProduit">
+				<div class="container">
+					<div class="page-header">
+						<h1>Ajouter un produit</h1>
+					</div>
+					<div class="row">
+						<div class="col-xs-6 col-xs-offset-3">
+							<form id="produitForm">
+								<div class="form-group">
+									<label class="control-label">Nom</label> <input type="text"
+										class="form-control" id="nomProduit" value="">
+								</div>
+								<div class="form-group">
+									<label class="control-label">description</label>
+									<textarea class="form-control" id="descriptionForm"></textarea>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Prix</label> <input type="number"
+										step="0.01" class="form-control" id="prixForm" value=""> €
+								</div>
+								<div class="form-group">
+									<label class="control-label">Allergènes</label>
+									<textarea class="form-control" id="allergenesForm"></textarea>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Quantité</label> <input type="number"
+										class="form-control" id="qteForm" value=""> 
+								</div>
+								<div class="form-group">
+									<label class="control-label">Image</label> <input type="file"
+										class="form-control" id="imageForm" value=""> 
+								</div>
 
+								<button id="btnAjoutPdt" type="submit"
+									class="btn btn-success btn-block">Ajouter</button>
+								
+							</form>
+						</div>
+						<script type="text/javascript">
+							$(document).ready(function() {
+								$("#zone").text("");
+								$("#btnAjoutPdt").click(function() {
+
+									ajoutProduit("v1/produit")
+
+								});
+							});
+						</script>
+
+					</div>
+				</div>
+			</div>
+
+
+
+
+		</div>
 		<div class="cache" id="infosClients">Contenu de la page des
 			informations clients</div>
 		<div class="cache" id="panier">Contenu de la page du panier</div>
@@ -230,10 +290,10 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-6 col-xs-offset-3">
-						<form id="loginForm" method="POST" action="servlet/Authen">
+						<form id="loginForm">
 							<div class="form-group">
 								<label for="login" class="control-label">Login</label> <input
-									type="text" class="form-control" id="login" name="login"
+									type="text" class="form-control" id="loginUser" name="login"
 									value="">
 							</div>
 							<div class="form-group">
@@ -242,10 +302,23 @@
 									name="mdp" value="">
 							</div>
 
-							<button type="submit" class="btn btn-success btn-block">Envoyer</button>
-							<a class="btn btn-default btn-block">Créer un compte !</a>
+							<button id="btnConnexion" type="submit"
+								class="btn btn-success btn-block">Envoyer</button>
+							<button id="btnCreerCompte" class="btn btn-default btn-block">Créer un compte !</button>
 						</form>
 					</div>
+					<script type="text/javascript">
+						$(document).ready(function() {
+							$("#zone").text("");
+							$("#btnConnexion").click(function() {
+
+								connexion("v1/user")
+								alert("ok");
+								$("#zone").show();
+							});
+						});
+					</script>
+
 				</div>
 			</div>
 		</div>
@@ -270,6 +343,10 @@
 		$("#ongletAllergenes").click(function() {
 			$('.cache').hide();
 			$('#allergenes').show();
+		});
+		$("#ongletAjoutProduit").click(function() {
+			$('.cache').hide();
+			$('#nouveauMenu').show();
 		});
 		$("#ongletInfosClient").click(function() {
 			$('.cache').hide();
@@ -303,6 +380,13 @@
 			$('.cache').hide();
 			$('#login').show();
 		});
+		$("#btnCreerCompte").click(function() {
+			$('.cache').hide();
+			$('#creationCompte').show();
+		});
 	</script>
 </body>
+<footer>
+<br/><br/><br/>
+</footer>
 </html>
