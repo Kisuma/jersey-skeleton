@@ -15,6 +15,8 @@ public class ProduitDto implements Principal {
     private String description;
     private String allergies;
     private int stock=0;
+    private String pathImage;
+    private String type;
     
     public int getIdproduit() {
         return idproduit;
@@ -62,6 +64,22 @@ public class ProduitDto implements Principal {
 
 	public void setStock(int stock) {
 		this.stock = stock;
+	}
+
+	public String getPathImage() {
+		return pathImage;
+	}
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

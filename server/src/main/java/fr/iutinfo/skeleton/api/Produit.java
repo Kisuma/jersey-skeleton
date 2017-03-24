@@ -14,9 +14,10 @@ public class Produit{
     private float prix;
     private String description;
     private String allergies;
+    private String pathImage;
+    private String type;
     private int stock=0;
     private String search;
-
 
     public Produit(int idproduit, String name) {
         this.idproduit = idproduit;
@@ -29,7 +30,7 @@ public class Produit{
         this.description = description;
     }
 
-    public Produit(String nom, String description, float prix, String allergies, int stock, int id) {
+    public Produit(String nom, String description, float prix, String allergies, String pathImage ,String type, int stock, int id ) {
 		super();
 		this.name = nom;
 		this.description = description;
@@ -37,6 +38,8 @@ public class Produit{
 		this.allergies = allergies;
 		this.stock = stock;
 		this.idproduit = id;
+		this.pathImage = pathImage;
+		this.type = type;
 	}
 
 	public Produit() { }
@@ -49,12 +52,18 @@ public class Produit{
         if (getClass() != arg.getClass())
             return false;
         Produit produit = (Produit) arg;
-        return name.equals(produit.name) && description.equals(produit.description) && prix==produit.prix && allergies.equals(produit.allergies) && stock==produit.stock;
+        return name.equals(produit.name)
+        		&& description.equals(produit.description) 
+        		&& prix==produit.prix 
+        		&& allergies.equals(produit.allergies) 
+        		&& stock==produit.stock
+        		&& type==produit.type
+        		&& pathImage==produit.pathImage;
     }
     @Override
 	public String toString() {
 		return "Produit [idproduit=" + idproduit + ", name=" + name + ", prix=" + prix + ", description=" + description + ", allergies="
-				+ allergies + ", stock=" + stock + "]";
+				+ allergies +" type="+type+ ", stock=" + stock + ", pathImage="+pathImage+ "]";
 	}
 
     public boolean isInProduitGroup() {
@@ -77,6 +86,8 @@ public class Produit{
         this.setAllergies(dto.getAllergies());
         this.setPrix(dto.getPrix());
         this.setStock(dto.getStock());
+        this.setPathImage(dto.getPathImage());
+        this.setType(dto.getType());
     }
 
     public ProduitDto convertToDto() {
@@ -87,6 +98,8 @@ public class Produit{
         dto.setDescription(this.getDescription());
         dto.setPrix(this.getPrix());
         dto.setStock(this.getStock());
+        dto.setPathImage(this.getPathImage());
+        dto.setType(this.getType());
         return dto;
     }
 
@@ -143,5 +156,22 @@ public class Produit{
 	public void setSearch(String search) {
 		this.search = search;
 	}
+
+	public String getPathImage() {
+		return pathImage;
+	}
+
+	public void setPathImage(String pathImage) {
+		this.pathImage = pathImage;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
     
 }
