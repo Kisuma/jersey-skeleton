@@ -1,21 +1,27 @@
 package fr.iutinfo.skeleton.api;
 
-import fr.iutinfo.skeleton.common.dto.UserDto;
+import java.sql.Timestamp;
+import java.util.List;
+
+import javax.ws.rs.core.GenericType;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.ws.rs.core.GenericType;
-import java.util.List;
+import fr.iutinfo.skeleton.common.dto.UserDto;
 
 public class Helper {
     private final static Logger logger = LoggerFactory.getLogger(Helper.class);
-    private static final UserDao dao = BDDFactory.getDbi().open(UserDao.class);
+    private static final UserDao userDao = BDDFactory.getDbi().open(UserDao.class);
+    private static final CommandeDAO cmdDao = BDDFactory.getDbi().open(CommandeDAO.class);    
     static GenericType<List<UserDto>> listUserResponseType = new GenericType<List<UserDto>>() {
     };
 
     public static void initDb() {
-        dao.dropUserTable();
-        dao.createUserTable();
+        userDao.dropUserTable();
+        userDao.createUserTable();
+        cmdDao.dropCommandeTable();
+        cmdDao.createCommandeTable();
     }
 
     static User createUserWithName(String name) {
@@ -43,7 +49,7 @@ public class Helper {
     }
 
     private static User createUser(User user) {
-        int id = dao.insert(user);
+        int id = userDao.insert(user);
         user.setId(id);
         return user;
     }
@@ -54,7 +60,7 @@ public class Helper {
         user.setAlias(alias);
         user.setEmail(email);
         user.setPassword(paswword);
-        int id = dao.insert(user);
+        int id = userDao.insert(user);
         user.setId(id);
         return user;
     }
@@ -74,4 +80,12 @@ public class Helper {
     static User createIan() {
         return createFullUSer("Ian Murdock", "debian", "ian@debian.org", "mot de passe");
     }
+
+	static void createSampleCommande() {
+		Commande commande = new Commande();
+		commande.setIduser(1);
+		commande.setIdproduit(2);
+		commande.setDatecommande(new Timestamp(System.currentTimeMillis()));
+		cmdDao.insert(commande);
+	}
 }

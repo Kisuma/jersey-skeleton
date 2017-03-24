@@ -26,7 +26,6 @@ public class Commande {
 	}
 	
 	public Commande() {
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -94,6 +93,10 @@ public class Commande {
 	public String getSearch() {
 		search = datecommande.toString();
 		return search;
+	}
+	
+	public void setSearch(String search) {
+		this.search = search;
 	}
 
 	public int getId() {
