@@ -18,6 +18,7 @@ public class Produit{
     private String type;
     private int stock=0;
     private String search;
+    private boolean supplement;
 
     public Produit(int idproduit, String name) {
         this.idproduit = idproduit;
@@ -88,6 +89,7 @@ public class Produit{
         this.setStock(dto.getStock());
         this.setPathImage(dto.getPathImage());
         this.setType(dto.getType());
+        this.setSupplement(dto.getSupplement());
     }
 
     public ProduitDto convertToDto() {
@@ -100,6 +102,7 @@ public class Produit{
         dto.setStock(this.getStock());
         dto.setPathImage(this.getPathImage());
         dto.setType(this.getType());
+        dto.setSupplement(this.getSupplement());
         return dto;
     }
 
@@ -171,6 +174,14 @@ public class Produit{
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public boolean getSupplement() {
+		return supplement;
+	}
+
+	public void setSupplement(boolean supplement) {
+		this.supplement = supplement;
 	}
 	
     
