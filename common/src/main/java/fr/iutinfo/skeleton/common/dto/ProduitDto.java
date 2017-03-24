@@ -9,19 +9,19 @@ import java.security.Principal;
 
 public class ProduitDto implements Principal {
     final static Logger logger = LoggerFactory.getLogger(ProduitDto.class);
-    private int id = 0;
+    private int idproduit = 0;
     private String name;
     private float prix;
     private String description;
     private String allergies;
     private int stock=0;
     
-    public int getId() {
-        return id;
+    public int getIdproduit() {
+        return idproduit;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdproduit(int idproduit) {
+        this.idproduit = idproduit;
     }
 
     public String getName() {

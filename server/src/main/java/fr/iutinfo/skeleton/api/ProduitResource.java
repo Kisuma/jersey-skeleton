@@ -32,8 +32,8 @@ public class ProduitResource {
     public ProduitDto createProduit(ProduitDto dto) {
         Produit produit = new Produit();
         produit.initFromDto(dto);
-        int id = dao.insert(produit);
-        dto.setId(id);
+        int idproduit = dao.insert(produit);
+        dto.setIdproduit(idproduit);
         return dto;
     }
 
@@ -60,9 +60,9 @@ public class ProduitResource {
     }
 
     @DELETE
-    @Path("/{id}")
-    public void deleteProduit(@PathParam("id") int id) {
-        dao.delete(id);
+    @Path("/{idproduit}")
+    public void deleteProduit(@PathParam("idproduit") int idproduit) {
+        dao.delete(idproduit);
     }
 
 }
