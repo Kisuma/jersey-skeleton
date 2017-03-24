@@ -207,13 +207,20 @@
 					<div class="row">
 						<div class="col-md-4"></div>
 						<div class="col-md-4">
-							<button name="btnInscrire" type="submit"
+							<button id="btnInscrire" type="submit"
 								class="btn btn-warning btn-block">S'inscrire</button>
 						</div>
 						<div class="col-md-4"></div>
 					</div>
 				</form>
 			</div>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$("#btnInscrire").click(function() {
+						inscrire("v1/user")
+					});
+				});
+			</script>
 		</div>
 
 		<div class="cache" id="login">
