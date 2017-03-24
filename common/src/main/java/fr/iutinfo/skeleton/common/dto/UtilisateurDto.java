@@ -15,6 +15,7 @@ public class UtilisateurDto implements Principal {
     private String tel;
     private String role;
     private String password;
+    private int nbCommandes;
 
     public String getEmail() {
         return email;
@@ -86,5 +87,13 @@ public class UtilisateurDto implements Principal {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public int getNbCommandes() {
+		return nbCommandes;
+	}
+
+	public void setNbCommandes(int nbCommandes) {
+		this.nbCommandes = nbCommandes;
 	}
 }

@@ -31,8 +31,8 @@ public class UtilisateurResource {
     private static UtilisateurDao dao = getDbi().open(UtilisateurDao.class);
 
     public UtilisateurResource() throws SQLException {
-        if (!tableExist("utilisateur")) {
-            logger.debug("Create table utilisateur");
+        if (!tableExist("utilisateurs")) {
+            logger.debug("Create table utilisateurs");
             dao.createUtilisateurTable();
             dao.insert(new Utilisateur(0, "Margaret Thatcher", "la Dame de fer"));
         }

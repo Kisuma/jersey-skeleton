@@ -23,7 +23,15 @@ public class Utilisateur implements Principal {
     private String tel;
     private String role;
     private int nbCommandes;
-    private String password;
+    public int getNbCommandes() {
+		return nbCommandes;
+	}
+
+	public void setNbCommandes(int nbCommandes) {
+		this.nbCommandes = nbCommandes;
+	}
+
+	private String password;
     private String passwdHash;
     private String salt;
     private String search;
@@ -121,6 +129,7 @@ public class Utilisateur implements Principal {
         this.setId(dto.getId());
         this.setName(dto.getName());
         this.setPassword(dto.getPassword());
+        this.setNbCommandes(dto.getNbCommandes());
     }
 
     public UtilisateurDto convertToDto() {
@@ -133,6 +142,7 @@ public class Utilisateur implements Principal {
         dto.setId(this.getId());
         dto.setName(this.getName());
         dto.setPassword(this.getPassword());
+        dto.setNbCommandes(this.getNbCommandes());
         return dto;
     }
 

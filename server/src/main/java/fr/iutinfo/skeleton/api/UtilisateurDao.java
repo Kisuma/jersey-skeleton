@@ -11,7 +11,7 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface UtilisateurDao {
-    @SqlUpdate("create table utilisateurs(iduser integer autoincrement, nom varchar(100), prenom varchar(100), email varchar(100),address varchar(100),tel varchar(10), role varchar(50),nbCommandes int, passwdHash varchar(64), salt varchar(64), search varchar(1024), primary key(iduser)")
+    @SqlUpdate("create table utilisateurs(iduser integer primary key autoincrement, nom varchar(100), prenom varchar(100), email varchar(100),address varchar(100),tel varchar(10), role varchar(50),nbCommandes integer, passwdHash varchar(64), salt varchar(64), search varchar(1024))")
     void createUtilisateurTable();
 
     @SqlUpdate("insert into utilisateurs(nom,prenom, email,address,tel,role,nbCommandes, passwdHash, salt, search) values (:nom, :prenom, :email, :address, :tel, :role, :nbCommandes, :passwdHash, :salt, :search)")
@@ -29,16 +29,16 @@ public interface UtilisateurDao {
     @SqlUpdate("drop table if exists utilisateurs")
     void dropUtilisateurTable();
 
-    @SqlUpdate("delete from utilisateurs where id = :id")
-    void delete(@Bind("id") int id);
+    @SqlUpdate("delete from utilisateurs where iduser = :iduser")
+    void delete(@Bind("iduser") int iduser);
 
-    @SqlQuery("select * from utilisateurs order by id")
+    @SqlQuery("select * from utilisateurs order by iduser")
     @RegisterMapperFactory(BeanMapperFactory.class)
     List<Utilisateur> all();
 
-    @SqlQuery("select * from utilisateurs where id = :id")
+    @SqlQuery("select * from utilisateurs where iduser = :iduser")
     @RegisterMapperFactory(BeanMapperFactory.class)
-    Utilisateur findById(@Bind("id") int id);
+    Utilisateur findByID(@Bind("iduser") int iduser);
 
     void close();
 }

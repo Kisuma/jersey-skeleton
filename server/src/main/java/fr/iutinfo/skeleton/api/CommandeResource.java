@@ -32,7 +32,6 @@ public class CommandeResource {
 	final static Logger logger = LoggerFactory.getLogger(CommandeResource.class);
 	private static CommandeDAO dao = getDbi().open(CommandeDAO.class);
 	
-	@SuppressWarnings("deprecation")
 	public CommandeResource() throws SQLException{
 		if(!tableExist("commandes")){
 			logger.debug("Create table commandes");
@@ -60,20 +59,20 @@ public class CommandeResource {
 	}
 	
 	@GET
-	public List<CommandeDto> getAllCommandes(@QueryParam("q") Timestamp date){
+	public List<CommandeDto> getAllCommandes(@QueryParam("q") String query){
 		List<Commande> commandes;
-		if(date == null){
+		if(query == null){
 			commandes = dao.all();
 		} else {
-			logger.debug("Search commande with query: " + date.toString());
-			commandes = dao.search(date);
+			logger.debug("Search commande with query: " + query);
+			commandes = dao.search("%" + query + "%");
 		}
 		return commandes.stream().map(Commande::convertToDto).collect(Collectors.toList());
 	}
 	
 	@DELETE
-	@Path("/{nbcommande}")
-	public void deleteCommande(@PathParam("nbcommande") int nbcommande){
-		dao.delete(nbcommande);
+	@Path("/{idcommande}")
+	public void deleteCommande(@PathParam("idcommande") int idcommande){
+		dao.delete(idcommande);
 	}
 }
