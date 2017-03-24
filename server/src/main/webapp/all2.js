@@ -130,9 +130,23 @@ function listerProduits(url) {
 		url : url,
 		success : function(data) {
 			$("#zone").text("");
+			var s = "<table>";
 			data.forEach(function(element) {
-				$("#zone").append(element.name + "<br />");
+				 s += "<tr><td>Nom : " + element.name + "</td><td> Prix : " + element.prix + "</td><td> Desctription du produit : " 
+					     + element.description + "</td><td> Allergies : " + element.allergies + "</td><td> Nous avons en stock " 
+					     + element.stock + " " + element.name+ "</td><td>" 
+					     + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'></td> <br />"
+					     + "</tr><br />";
+					$("#zone").append(s);
+					/*
+				$("#zone").append("<tr><td> Nom : " + element.name + "<br />Prix : " + element.prix + "<br />Desctription du produit : " 
+					     + element.description + "<br />Allergies : " + element.allergies + "<br />Nous avons en stock " 
+					     + element.stock + " " + element.name+ "<br />" 
+					  //   + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'> <br />"
+					     + "</tr></td>");*/
 			});
+			s += "</table>";
+			$("#zone").append(s);
 
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
