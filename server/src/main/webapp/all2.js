@@ -2,6 +2,7 @@ function inscrire(url) {
 	if($("#nom").val().length>0 && $("#adresse").val().length>0 && $("#mdp").val().length>0 && $("#prenom").val().length>0 && 
 			$("#mail").val().length>0 && $("#mdp2").val().length>0) {
 
+		
 		var name = $("#nom").val();
 		var adresse = $("#adresse").val();
 		var mdp = $("#mdp").val();
@@ -22,7 +23,7 @@ function inscrire(url) {
 				"mail" : mail,
 			}),
 			success : function(data) {
-				alert("vous êtes bien inscrit");
+				alert("Vous êtes bien inscrit.");
 
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
@@ -30,7 +31,7 @@ function inscrire(url) {
 			}
 		});
 	} else {
-		alert("veuillez remplir tous les champs !");
+		alert("Veuillez remplir tous les champs !");
 	}
 
 }
@@ -57,11 +58,85 @@ function connexion(url) {
 		});
 
 	} else {
-		alert("veuillez remplir tous les champs !");
+		alert("Veuillez remplir tous les champs !");
 	}
 }
 
 function ajoutProduit(url){
 	if($("#nomProduit").val().length>0 && $("#descriptionForm").val().length>0 && $("#prixForm").val().length>0 && $("#allergenesForm").val().length>0 && 
 			$("#qteForm").val().length>0 && $("#imageForm").val().length>0) {
+
+		var nomProduit= $("#nomProduit").val();
+		var descriptionForm= $("#descriptionForm").val();
+		var prixForm = $("#prixForm").val();
+		var allergenesForm= $("#allergenesForm").val();
+		var qteForm= $("#qteForm").val();
+		var imageForm= $("#imageForm").val();
+		var typeForm= $("#typeForm").val();
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			contentType : "application/json",
+			data : JSON.stringify({
+				"name" : nomProduit,
+				"description" : descriptionForm,
+				"prix" : prixForm,
+				"allergies" : allergenesForm,
+				"pathImage" : imageForm,
+				"stock" : qteForm,
+				"search" : nomProduit + descriptionForm,
+				"type" : typeProduitForm,
+			}),
+			success : function(data) {
+				alert("Produit ajouté.");
+
+			},
+			error : function(jqXHR, textStatus, errorThrown) {
+				alert('error: ' + textStatus);
+			}
+		});
+
+	} else {
+		alert("Veuillez remplir tous les champs !");
+	}
+}
+
+function listerUsers(url) {
+	$("#zone").text("chargement...");
+
+	$.ajax({
+		type : "GET",
+		url : url,
+		success : function(data) {
+			$("#zone").text("");
+			data.forEach(function(element) {
+				$("#zone").append(element.nom + "<br />");
+			});
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error: ' + textStatus);
+		}
+	});
+}
+
+
+function listerProduits(url) {
+	$("#zone").text("chargement...");
+
+	$.ajax({
+		type : "GET",
+		url : url,
+		success : function(data) {
+			$("#zone").text("");
+			data.forEach(function(element) {
+				$("#zone").append(element.name + "<br />");
+			});
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error: ' + textStatus);
+		}
+	});
 }
