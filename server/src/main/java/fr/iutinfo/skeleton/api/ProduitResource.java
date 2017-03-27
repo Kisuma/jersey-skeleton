@@ -61,7 +61,7 @@ public class ProduitResource {
         }
         return produits.stream().map(Produit::convertToDto).collect(Collectors.toList());
     }
-    
+    /*
     @GET
     @Path("/init/data")
     public void initData() {
@@ -72,7 +72,7 @@ public class ProduitResource {
     	// insert
         dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en."));
 
-    }
+    }*/
 
     @DELETE
     @Path("/{idproduit}")
