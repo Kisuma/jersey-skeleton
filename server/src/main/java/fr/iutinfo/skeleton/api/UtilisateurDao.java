@@ -11,10 +11,10 @@ import org.skife.jdbi.v2.sqlobject.customizers.RegisterMapperFactory;
 import org.skife.jdbi.v2.tweak.BeanMapperFactory;
 
 public interface UtilisateurDao {
-    @SqlUpdate("create table utilisateurs(iduser integer primary key autoincrement, nom varchar(100), prenom varchar(100), email varchar(100),address varchar(100),tel varchar(10), role varchar(50),nbCommandes integer, passwdHash varchar(64), salt varchar(64), search varchar(1024))")
+    @SqlUpdate("create table utilisateurs(iduser integer primary key autoincrement, nom varchar(100), prenom varchar(100), email varchar(100),address varchar(100),tel varchar(10), role varchar(50), entreprise varchar(50),nbCommandes integer, passwdHash varchar(64), salt varchar(64), search varchar(1024))")
     void createUtilisateurTable();
 
-    @SqlUpdate("insert into utilisateurs(nom,prenom, email,address,tel,role,nbCommandes, passwdHash, salt, search) values (:nom, :prenom, :email, :address, :tel, :role, :nbCommandes, :passwdHash, :salt, :search)")
+    @SqlUpdate("insert into utilisateurs(nom,prenom, email,address,tel,role,entreprise,nbCommandes, passwdHash, salt, search) values (:nom, :prenom, :email, :address, :tel, :role, :entreprise, :nbCommandes, :passwdHash, :salt, :search)")
     @GetGeneratedKeys
     int insert(@BindBean() Utilisateur user);
 

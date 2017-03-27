@@ -6,56 +6,57 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class UtilisateurDto implements Principal {
-    final static Logger logger = LoggerFactory.getLogger(UtilisateurDto.class);
-    private String nom;
-    private String prenom;
-    private int id = 0;
-    private String email;
-    private String address;
-    private String tel;
-    private String role;
-    private String password;
-    private int nbCommandes;
+	final static Logger logger = LoggerFactory.getLogger(UtilisateurDto.class);
+	private String nom;
+	private String prenom;
+	private int id = 0;
+	private String email;
+	private String address;
+	private String tel;
+	private String role;
+	private String password;
+	private String entreprise;
+	private int nbCommandes;
 
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return nom;
-    }
+	public String getName() {
+		return nom;
+	}
 
-    public void setName(String name) {
-        this.nom = name;
-    }
+	public void setName(String name) {
+		this.nom = name;
+	}
 
-    public String getPassword() {
-        return this.password;
-    }
+	public String getPassword() {
+		return this.password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-    public String getPrenom() {
-        return prenom;
-    }
+	public String getPrenom() {
+		return prenom;
+	}
 
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
-    }
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 
 	public String getNom() {
 		return nom;
@@ -95,5 +96,13 @@ public class UtilisateurDto implements Principal {
 
 	public void setNbCommandes(int nbCommandes) {
 		this.nbCommandes = nbCommandes;
+	}
+
+	public String getEntreprise() {
+		return entreprise;
+	}
+
+	public void setEntreprise(String entreprise) {
+		this.entreprise = entreprise;
 	}
 }

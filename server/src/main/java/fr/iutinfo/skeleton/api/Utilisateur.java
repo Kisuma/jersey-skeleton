@@ -22,6 +22,7 @@ public class Utilisateur implements Principal {
     private String address;
     private String tel;
     private String role;
+    private String entreprise;
     private int nbCommandes;
     public int getNbCommandes() {
 		return nbCommandes;
@@ -130,6 +131,7 @@ public class Utilisateur implements Principal {
         this.setName(dto.getName());
         this.setPassword(dto.getPassword());
         this.setNbCommandes(dto.getNbCommandes());
+        this.setEntreprise(dto.getEntreprise());
     }
 
     public UtilisateurDto convertToDto() {
@@ -143,6 +145,7 @@ public class Utilisateur implements Principal {
         dto.setName(this.getName());
         dto.setPassword(this.getPassword());
         dto.setNbCommandes(this.getNbCommandes());
+        dto.setEntreprise(this.getEntreprise());
         return dto;
     }
 
@@ -238,6 +241,14 @@ public class Utilisateur implements Principal {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getEntreprise() {
+		return entreprise;
+	}
+
+	public void setEntreprise(String entreprise) {
+		this.entreprise = entreprise;
 	}
     
 }
