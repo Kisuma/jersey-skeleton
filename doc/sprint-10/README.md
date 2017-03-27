@@ -7,7 +7,7 @@ Nom du scrum master du sprint : LECOMTE Adrien
 nous avons eu des difficultés à nous connecter à notre serveur via l'application.  
 tion de la présentation des plats. 
 ## Ce que nous allons faire durant le prochain sprint
-Finir la connection via l'application, quelques pages simples et rapides a ajouter (Contacte, conditions générales, etc..) et finir la modification des plats par l'administrateur. 
+Finir la connection via l'application, quelques pages simples et rapides à ajouter (Contacte, conditions générales, etc..) et finir la modification des plats par l'administrateur. 
 
 ## PDCA 
 
@@ -15,11 +15,11 @@ Finir la connection via l'application, quelques pages simples et rapides a ajout
 Nous avons tester de nous connecter a l'addresse ip donner par deliverous via l'application 
 ### Qu'avons nous observé ? 
 les navigateur se connecte mais pas l'application.
-Nous nous sommes rendue compte que la modification des plan'atait pas terminé.
+Nous nous sommes rendue compte que la modification des plas n'était pas terminé.
 ### Quelle décision prenons nous suite à cette expérience ? 
 
 ### Qu'allons nous tester durant les 2 prochaines heures ? 
 Nous allons essayer de nous connecter.
 ### À quoi verra-t-on que celà à fonctionné ?
-Si l'application affiche le contenu de nos tables et le site contient les fonctionnalités décrites si dessu. 
+Si l'application affiche le contenu de nos tables et le site contient les fonctionnalités décrites çi-dessus. 
 # Mémooubliez pas d'ajouter une photo du radiateur d'information au moment de la rétrospective.
