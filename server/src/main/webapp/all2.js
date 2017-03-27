@@ -128,7 +128,7 @@ function listerProduits(url) {
 		url : url,
 		success : function(data) {
 			$("#menus").text("");
-			var s = "<h1 style=\"margin-left:60px;\"> Les Menus et les suppléments</h1><div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top:60px;\" >";
+			var s = "<h1 style=\"margin-left:60px;\"> Les Menus et les suppléments</h1><div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top:60px;\" ><div class=\"row\" >";
 			var j = "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
 			data.forEach(function(element) {
 
@@ -139,7 +139,7 @@ function listerProduits(url) {
 				s+= "<p>" + element.prix + "</p>";
 				s+= "<p>" + element.allergies + "</p>";
 				s+= "<p><a id =\"btnDetails\" class=\"btn btn-default\" role=\"button\">Détails</a>";
-				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
+				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div></div>";
 
 			});
 			s += "</div>";
@@ -174,7 +174,7 @@ function listerDetailsProduits(url) {
 			var s = "<div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top=60px;\" >";
 			var j= "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
 	
-				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
+				s+= "<div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
 				s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
 				s+= "<div class=\"caption\">";
 				s+= "<h3>" + data.name + "</h3>"
@@ -182,11 +182,11 @@ function listerDetailsProduits(url) {
 				s+= "<p>" + data.allergies + "</p>";
 				s+= "<p>" + data.description + "</p>";
 				s+= "<p><a id =\"menus\" href=\"#\" class=\"btn btn-default\" role=\"button\">Retour</a>";
-				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
+				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div>";
 			
 		
 		
-			s += "</div>";
+			s += "</div></div>";
 			$("#menusDetails").append(s);
 
 
