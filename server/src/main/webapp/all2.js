@@ -37,7 +37,6 @@ function inscrire(url) {
 }
 
 
-
 function connexion(url) {
 	if($("#loginUser").val().length>0 ) {
 		var nameConnexion = $("#login").val();
