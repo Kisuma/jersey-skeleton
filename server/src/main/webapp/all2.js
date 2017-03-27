@@ -130,11 +130,11 @@ function listerProduits(url) {
 		success : function(data) {
 			$("#menus").text("");
 			var s = "<h1 style=\"margin-left:60px;\"> Les Menus et les suppléments</h1><div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top:60px;\" >";
-			var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
+			//var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
 			data.forEach(function(element) {
 				
 				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
-				s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
+				s+= "<a href=\"#\" > <img src=\"" + element.pathImage+ "\"></a>";
 				s+= "<div class=\"caption\">";
 				s+= "<h3>" + element.name + "</h3>"
 				s+= "<p>" + element.prix + "</p>";
@@ -163,10 +163,10 @@ function listerDetailsProduits(url) {
 		success : function(data) {
 			$("#menusDetails").text("");
 			var s = "<div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top=60px;\" >";
-			var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
+			//var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
 			data.forEach(function(element) {
 				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
-				s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
+				s+= "<a href=\"#\" > <img src=\" " + element.pathImage+ "\"></a>";
 				s+= "<div class=\"caption\">";
 				s+= "<h3>" + element.name + "</h3>"
 				s+= "<p>" + element.prix + "</p>";
