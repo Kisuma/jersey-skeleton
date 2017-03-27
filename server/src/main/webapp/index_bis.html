@@ -39,7 +39,7 @@
 				</a>
 					<ul class="dropdown-menu">
 						<li><a id="ongletMenus" href="#" >Cette semaine</a></li>
-						<li><a id="ongletSupplements" href="#">Les suppléments</a></li>
+						<!-- <li><a id="ongletSupplements" href="#">Les suppléments</a></li>-->
 						<li><a id="ongletAllergenes" href="#">Allergènes</a></li>
 						<li><a id="ongletAjoutProduit" href="#">Ajouter un
 								produit</a></li>
@@ -173,10 +173,8 @@
 								<div class="form-group">
 									<label for="pays">Type de produit</label><br /> <select
 										id="typeProduitForm">
-										<option value="plat">Plat</option>
-										<option value="entrée">Entrée</option>
-										<option value="dessert">Dessert</option>
-										<option value="boisson">Boisson</option>
+										<option value="optionMenu">Menu</option>
+										<option value="optionSupplement">Supplément</option>
 									</select>
 								</div>
 								<div class="form-group">
@@ -375,18 +373,20 @@
 		$("#ongletMenus").click(function() {
 			$('.cache').hide();
 			$('#menus').show();
-			//$('#zone').show();
 			listerProduits("v1/produit")
 		});
+		/*
 		$("#ongletSupplements").click(function() {
 			$('.cache').hide();
 			$('#supplements').show();
 			listerSupplements("v1/produit")
 		});
+		*/
 		$("#ongletAllergenes").click(function() {
 			$('.cache').hide();
 			$('#allergenes').show();
 		});
+		
 		$("#ongletAjoutProduit").click(function() {
 			$('.cache').hide();
 			$('#nouveauMenu').show();
