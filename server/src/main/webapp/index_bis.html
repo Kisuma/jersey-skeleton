@@ -23,13 +23,13 @@
 				<!-- <h1>Bienvenue sur Mimoosa !</h1>-->
 				<a id="ongletAccueil" href="#"><img src="img/logo.jpg"
 					alt="Logo de Mimoosa" /></a>
-				<h4 align="center">Egayer votre déjeuner</h4>
+				<h4 align="center" style="font-size:3em">Egayer votre déjeuner</h4>
 
 			</div>
 		</div>
 	</header>
 
-	<nav class="navbar navbar-default" role="navigation">
+	<nav class="navbar navbar-default" role="navigation" style="font-size:1.5em">
 		<div class="collapse navbar-collapse" id="oNavigation">
 			<ul class="nav navbar-nav">
 				<li><a id="ongletAccueil" href="#">Accueil</a></li>
@@ -38,7 +38,7 @@
 					data-toggle="dropdown">Les Menus<b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
-						<li><a id="ongletMenus" href="#">Cette semaine</a></li>
+						<li><a id="ongletMenus" href="#" >Cette semaine</a></li>
 						<li><a id="ongletSupplements" href="#">Les suppléments</a></li>
 						<li><a id="ongletAllergenes" href="#">Allergènes</a></li>
 						<li><a id="ongletAjoutProduit" href="#">Ajouter un
@@ -54,7 +54,8 @@
 						<li><a id="ongletHistorique" href="#">Mon historique</a></li>
 					</ul></li>
 
-				<li><a id="ongletCGV">Les conditions générales de vente</a></li>
+				<li><a id="ongletCGV" href="#">Les conditions générales de
+						vente</a></li>
 
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown">Nous contacter<b class="caret"></b>
@@ -71,14 +72,17 @@
 
 		<button name="clients" id="btnListerClients">Lister les
 			clients</button>
+		<!-- 
 		<button name="produits" id="btnListerProduits">Lister les
 			produits</button>
+		-->
 		<div id="zone"></div>
 	</nav>
 
 	<div id="contenu">
 		<div class="cache" id="accueil">Contenu de la page d'accueil</div>
-		<div class="cache" id="menus">Contenu de la page des menus</div>
+		<div class="cache" id="menus"></div>
+		<div class="cache" id="menusDetails"></div>
 		<div class="cache" id="supplements">Contenu de la page des
 			suppléments</div>
 		<div class="cache" id="allergenes">
@@ -173,7 +177,7 @@
 										<option value="entrée">Entrée</option>
 										<option value="dessert">Dessert</option>
 										<option value="boisson">Boisson</option>
-									</select> 
+									</select>
 								</div>
 								<div class="form-group">
 									<label class="control-label">Nom</label> <input type="text"
@@ -222,11 +226,25 @@
 		<div class="cache" id="panier">Contenu de la page du panier</div>
 		<div class="cache" id="historique">Contenu de la page de
 			l'historique</div>
-		<div class="cache" id="CGV">Contenu de la page CGV</div>
+		<div class="cache" id="CGV">
+			<h3>Conditions Générales de Vente</h3>
+			<p>Site en cours de construction ...</p>
+		</div>
 		<div class="cache" id="infos">Contenu de la page des
 			informations</div>
-		<div class="cache" id="partenaires">Contenu de la page des
-			partenaires</div>
+		<div class="cache" id="partenaires">
+			<div class="container-fluid" style="">
+
+				<div class="row">
+					<div class="col-sm-6 col-md-3">
+						<div class="thumbnail" style="text-align: center;">
+						
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
 
 
 		<div class="cache" id="creationCompte">
@@ -320,7 +338,7 @@
 	<script type="text/javascript">
 		$('.cache').hide();
 		$('#accueil').show();
-		
+
 		$(document).ready(function() {
 			$("#zone").text("");
 			$("#btnAjoutPdt").click(function() {
@@ -337,8 +355,16 @@
 			$("#btnListerClients").click(function() {
 				listerUsers("v1/utilisateur")
 			});
+			/*
 			$("#btnListerProduits").click(function() {
 				listerProduits("v1/produit")
+			});
+			 */
+			$("#btnDetails").click(function() {
+				listerDetailsProduits("v1/produit")
+				$('.cache').hide();
+				$('#menusDetails').show();
+				//alert("ok");
 			});
 		});
 
@@ -349,10 +375,13 @@
 		$("#ongletMenus").click(function() {
 			$('.cache').hide();
 			$('#menus').show();
+			//$('#zone').show();
+			listerProduits("v1/produit")
 		});
 		$("#ongletSupplements").click(function() {
 			$('.cache').hide();
 			$('#supplements').show();
+			listerSupplements("v1/produit")
 		});
 		$("#ongletAllergenes").click(function() {
 			$('.cache').hide();
@@ -398,11 +427,6 @@
 			$('.cache').hide();
 			$('#creationCompte').show();
 		});
-		
-		
-		
-	
-
 	</script>
 </body>
 <footer>

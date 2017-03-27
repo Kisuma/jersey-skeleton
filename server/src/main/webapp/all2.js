@@ -2,7 +2,7 @@ function inscrire(url) {
 	if($("#nom").val().length>0 && $("#adresse").val().length>0 && $("#mdp").val().length>0 && $("#prenom").val().length>0 && 
 			$("#mail").val().length>0 && $("#mdp2").val().length>0) {
 
-		
+
 		var name = $("#nom").val();
 		var adresse = $("#adresse").val();
 		var mdp = $("#mdp").val();
@@ -121,32 +121,121 @@ function listerUsers(url) {
 	});
 }
 
-
-function listerProduits(url) {
-	$("#zone").text("chargement...");
+function listerSupplements(url) {
+	$("#supplements").text("chargement...");
 
 	$.ajax({
 		type : "GET",
 		url : url,
 		success : function(data) {
-			$("#zone").text("");
-			var s = "<table>";
+	$("#supplements").text("");
+	var s = "<div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top=60px;\" >";
+	var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
+	data.forEach(function(element) {
+		if(element.supplement){
+			s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
+			s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
+			s+= "<div class=\"caption\">";
+			s+= "<h3>" + element.name + "</h3>"
+			s+= "<p>" + element.prix + "</p>";
+			s+= "<p>" + element.allergies + "</p>";
+			s+= "<p><a id =\"btnDetails\" href=\"#\" class=\"btn btn-default\" role=\"button\">Détails</a>";
+			s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
+		}
+	});
+	s += "</div>";
+	$("#supplements").append(s);
+
+
+	},
+	error : function(jqXHR, textStatus, errorThrown) {
+		alert('error: ' + textStatus);
+	}
+});
+}
+
+function listerProduits(url) {
+	$("#menus").text("chargement...");
+
+	$.ajax({
+		type : "GET",
+		url : url,
+		success : function(data) {
+			$("#menus").text("");
+			var s = "<div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top=60px;\" >";
+			var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
 			data.forEach(function(element) {
-				 s += "<tr><td>Nom : " + element.name + "</td><td> Prix : " + element.prix + "</td><td> Desctription du produit : " 
-					     + element.description + "</td><td> Allergies : " + element.allergies + "</td><td> Nous avons en stock " 
-					     + element.stock + " " + element.name+ "</td><td>" 
+				if(!element.supplement){
+				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
+				s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
+				s+= "<div class=\"caption\">";
+				s+= "<h3>" + element.name + "</h3>"
+				s+= "<p>" + element.prix + "</p>";
+				s+= "<p>" + element.allergies + "</p>";
+				s+= "<p><a id =\"btnDetails\" href=\"#\" class=\"btn btn-default\" role=\"button\">Détails</a>";
+				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
+				}
+				/*	
+				 s += "<tr><td>Nom : " + element.name + "</td><br /><td> Prix : " + element.prix + "</td><br /><td> Desctription du produit : " 
+					     + element.description + "</td><br /><td> Allergies : " + element.allergies + "</td><br /><td> Nous avons en stock " 
+					     + element.stock + " " + element.name+ "</td><br /><td>" 
 					     + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'></td> <br />"
 					     + "</tr><br />";
-					$("#zone").append(s);
-					/*
+
 				$("#zone").append("<tr><td> Nom : " + element.name + "<br />Prix : " + element.prix + "<br />Desctription du produit : " 
 					     + element.description + "<br />Allergies : " + element.allergies + "<br />Nous avons en stock " 
 					     + element.stock + " " + element.name+ "<br />" 
 					  //   + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'> <br />"
 					     + "</tr></td>");*/
 			});
-			s += "</table>";
-			$("#zone").append(s);
+			s += "</div>";
+			$("#menus").append(s);
+
+
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert('error: ' + textStatus);
+		}
+	});
+}
+
+function listerDetailsProduits(url) {
+	$("#menusDetails").text("chargement...");
+
+	$.ajax({
+		type : "GET",
+		url : url,
+		success : function(data) {
+			$("#menusDetails").text("");
+			var s = "<div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top=60px;\" >";
+			var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
+			data.forEach(function(element) {
+				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
+				s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
+				s+= "<div class=\"caption\">";
+				s+= "<h3>" + element.name + "</h3>"
+				s+= "<p>" + element.prix + "</p>";
+				s+= "<p>" + element.allergies + "</p>";
+				s+= "<p>" + element.description + "</p>";
+				s+= "<p><a id =\"btnDetails\" href=\"#\" class=\"btn btn-default\" role=\"button\">Détails</a>";
+				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
+
+				/*	
+				 s += "<tr><td>Nom : " + element.name + "</td><br /><td> Prix : " + element.prix + "</td><br /><td> Desctription du produit : " 
+					     + element.description + "</td><br /><td> Allergies : " + element.allergies + "</td><br /><td> Nous avons en stock " 
+					     + element.stock + " " + element.name+ "</td><br /><td>" 
+					     + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'></td> <br />"
+					     + "</tr><br />";
+
+				$("#zone").append("<tr><td> Nom : " + element.name + "<br />Prix : " + element.prix + "<br />Desctription du produit : " 
+					     + element.description + "<br />Allergies : " + element.allergies + "<br />Nous avons en stock " 
+					     + element.stock + " " + element.name+ "<br />" 
+					  //   + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'> <br />"
+					     + "</tr></td>");*/
+			});
+			s += "</div>";
+			$("#menusDetails").append(s);
+
 
 		},
 		error : function(jqXHR, textStatus, errorThrown) {

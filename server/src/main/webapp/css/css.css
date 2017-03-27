@@ -1,3 +1,10 @@
+body{
+    font-family:"cinnamon";
+}
+
+.dropdown-menu{
+   font-size:1em;
+}
 .navbar-collapse{
     text-align:center;
 }
@@ -5,4 +12,9 @@
 .navbar-nav{
     display:inline-block;
     float:none;
+}
+
+@font-face {
+font-family: "cinnamon";
+src: url('cinnamonCake.ttf');
 }
