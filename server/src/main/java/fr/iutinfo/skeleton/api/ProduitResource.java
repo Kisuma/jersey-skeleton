@@ -24,7 +24,10 @@ public class ProduitResource {
         if (!tableExist("produits")) {
             logger.debug("Create table produits");
             dao.createProduitTable();
-            dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en."));
+        } else {        	
+        	if(dao.all().isEmpty()) {
+                dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en."));
+        	}
         }
     }
 
@@ -57,6 +60,18 @@ public class ProduitResource {
             produits = dao.search("%" + query + "%");
         }
         return produits.stream().map(Produit::convertToDto).collect(Collectors.toList());
+    }
+    
+    @GET
+    @Path("/init/data")
+    public void initData() {
+       // drop table
+    	dao.dropProduitTable();
+    	//  create table
+        dao.createProduitTable();
+    	// insert
+        dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en."));
+
     }
 
     @DELETE

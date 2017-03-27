@@ -10,7 +10,7 @@ public interface ProduitDao {
     @SqlUpdate("create table produits(idproduit integer primary key autoincrement, name varchar(100),description varchar(1000),prix float,allergies varchar(100),pathImage varchar(1000),type varchar(50),stock int, produitdelasemaine boolean, supplement boolean, search varchar(1024))")
     void createProduitTable();
 
-    @SqlUpdate("Insert into produits(name,description,prix,allergies,pathImage,type,stock,produitdelasemaine,supplement,search) values (:name, :description,:prix,:allergies,:pathImage,:type,:stock,:produitdelasemaine,:supplement, :search)")
+    @SqlUpdate("Insert into produits(name,description,prix,allergies,pathImage,type,stock,produitDeLaSemaine,supplement,search) values (:name, :description,:prix,:allergies,:pathImage,:type,:stock,:produitDeLaSemaine,:supplement, :search)")
     @GetGeneratedKeys
     int insert(@BindBean() Produit produit);
 
