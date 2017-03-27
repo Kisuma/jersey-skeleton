@@ -1,11 +1,11 @@
 # Rétrospective de sprint
 
-Nom du scrum master du sprint : 
+Nom du scrum master du sprint : Adrien Lecomte
 
 ## Ce que nous avons fait durant ce sprint
 Finis la modification des plats 
 # Ce que nous allons faire durant le prochain sprint
-ajouter des supplements, commencer l'application android.
+Ajouter des suppléments, commencer l'application android.
 ## PDCA 
 ### Qu'avons nous testé durant ce sprint ? 
 

@@ -1,18 +1,19 @@
 # Rétrospective de sprint
 
-Nom du scrum master du sprint : Theo Capon
+Nom du scrum master du sprint : Théo Capon
 
 ## Ce que nous avons fait durant ce sprint
-Alimenter notre site internet
+Mise en forme du site, la BDD sous Android
 
 ## Ce que nous allons faire durant le prochain sprint
-Commencer l'application mobile, et continuer à alimenter le site web
+mise en forme du site, gerer les problemes avec la BDD et Deliverous
 
 ## PDCA 
 ### Qu'avons nous testé durant ce sprint ? 
+Testé d'ajouter des commandes dans la base de données 
 
 ### Qu'avons nous observé ? 
-
+que deliverous fonctionne 1/2.
 ### Quelle décision prenons nous suite à cette expérience ? 
 
 ### Qu'allons nous tester durant les 2 prochaines heures ? 
