@@ -8,7 +8,6 @@ import fr.iutinfo.skeleton.common.dto.ProduitDto;
 
 public class Produit{
     final static Logger logger = LoggerFactory.getLogger(Produit.class);
-    private static Produit anonymous = new Produit(-1, "Anonymous", "anonym");
     private int idproduit = 0;
     private String name;
     private float prix;
@@ -18,6 +17,7 @@ public class Produit{
     private String type;
     private int stock=0;
     private String search;
+    private boolean produitDeLaSemaine;
     private boolean supplement;
 
     public Produit(int idproduit, String name) {
@@ -45,9 +45,6 @@ public class Produit{
 
 	public Produit() { }
 
-    public static Produit getAnonymousProduit() {
-        return anonymous;
-    }
     @Override
     public boolean equals(Object arg) {
         if (getClass() != arg.getClass())
@@ -67,14 +64,6 @@ public class Produit{
 				+ allergies +" type="+type+ ", stock=" + stock + ", pathImage="+pathImage+ "]";
 	}
 
-    public boolean isInProduitGroup() {
-        return !(idproduit == anonymous.getIdproduit());
-    }
-
-    public boolean isAnonymous() {
-        return this.getIdproduit() == getAnonymousProduit().getIdproduit();
-    }
-
     public String getSearch() {
         search = name + " " + description + " " ;
         return search;
@@ -89,6 +78,7 @@ public class Produit{
         this.setStock(dto.getStock());
         this.setPathImage(dto.getPathImage());
         this.setType(dto.getType());
+        this.setProduitDeLaSemaine(dto.getProduitDeLaSemaine());
         this.setSupplement(dto.getSupplement());
     }
 
@@ -102,6 +92,7 @@ public class Produit{
         dto.setStock(this.getStock());
         dto.setPathImage(this.getPathImage());
         dto.setType(this.getType());
+        dto.setProduitDeLaSemaine(this.getProduitDeLaSemaine());
         dto.setSupplement(this.getSupplement());
         return dto;
     }
@@ -182,6 +173,14 @@ public class Produit{
 
 	public void setSupplement(boolean supplement) {
 		this.supplement = supplement;
+	}
+
+	public boolean getProduitDeLaSemaine() {
+		return produitDeLaSemaine;
+	}
+
+	public void setProduitDeLaSemaine(boolean produitDeLaSemaine) {
+		this.produitDeLaSemaine = produitDeLaSemaine;
 	}
 	
     

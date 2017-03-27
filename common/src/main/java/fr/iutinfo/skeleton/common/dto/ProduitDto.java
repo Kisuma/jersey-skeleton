@@ -17,6 +17,7 @@ public class ProduitDto implements Principal {
     private int stock=0;
     private String pathImage;
     private String type;
+    private boolean produitDeLaSemaine;
     private boolean supplement;
     
     public int getIdproduit() {
@@ -89,6 +90,14 @@ public class ProduitDto implements Principal {
 
 	public void setSupplement(boolean supplement) {
 		this.supplement = supplement;
+	}
+
+	public boolean getProduitDeLaSemaine() {
+		return produitDeLaSemaine;
+	}
+
+	public void setProduitDeLaSemaine(boolean produitDeLaSemaine) {
+		this.produitDeLaSemaine = produitDeLaSemaine;
 	}
 	
 }
