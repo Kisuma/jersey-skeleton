@@ -1,6 +1,6 @@
 # Rétrospective de sprint
 
-Nom du scrum master du sprint : 
+Nom du scrum master du sprint : Adrien Lecomte
 
 ## Ce que nous avons fait durant ce sprint
 Finis la modification des plats 

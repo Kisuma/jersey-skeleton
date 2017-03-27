@@ -1,12 +1,12 @@
 # Rétrospective de sprint
 
-Nom du scrum master du sprint : 
+Nom du scrum master du sprint : Theo Capon
 
 ## Ce que nous avons fait durant ce sprint
 Alimenter notre site internet
 
 ## Ce que nous allons faire durant le prochain sprint
-Commencer l'aplication mobile, et continuer à alimenter le site web
+Commencer l'application mobile, et continuer à alimenter le site web
 
 ## PDCA 
 ### Qu'avons nous testé durant ce sprint ? 
