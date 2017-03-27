@@ -130,64 +130,63 @@ function listerProduits(url) {
 		success : function(data) {
 			$("#menus").text("");
 			var s = "<h1 style=\"margin-left:60px;\"> Les Menus et les suppléments</h1><div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top:60px;\" >";
-			//var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
+			var j = "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
 			data.forEach(function(element) {
-				
+
 				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
-				s+= "<a href=\"#\" > <img src=\"" + element.pathImage+ "\"></a>";
+				s+= "<a href=\"#\" > <img src=\"" + j+ "\"></a>";
 				s+= "<div class=\"caption\">";
 				s+= "<h3>" + element.name + "</h3>"
 				s+= "<p>" + element.prix + "</p>";
 				s+= "<p>" + element.allergies + "</p>";
-				s+= "<p><a id =\"btnDetails\" href=\"#\" class=\"btn btn-default\" role=\"button\">Détails</a>";
+				s+= "<p><a id =\"btnDetails\" class=\"btn btn-default\" role=\"button\">Détails</a>";
 				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
-				
+
 			});
 			s += "</div>";
 			$("#menus").append(s);
+			
+			
+			$("#btnDetails").click(function() {
+				$('.cache').hide();
+				$('#menusDetails').show();
+				listerDetailsProduits("v1/produit")
+			});
 
 
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
 			alert('error: ' + textStatus);
 		}
+		
+		
+		
 	});
 }
 
 function listerDetailsProduits(url) {
 	$("#menusDetails").text("chargement...");
-
+	
 	$.ajax({
 		type : "GET",
 		url : url,
 		success : function(data) {
 			$("#menusDetails").text("");
 			var s = "<div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top=60px;\" >";
-			//var j = "http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg";
-			data.forEach(function(element) {
+			var j= "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
+	
 				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
-				s+= "<a href=\"#\" > <img src=\" " + element.pathImage+ "\"></a>";
+				s+= "<a href=\"#\" > <img src=\" " + j+ "\"></a>";
 				s+= "<div class=\"caption\">";
-				s+= "<h3>" + element.name + "</h3>"
-				s+= "<p>" + element.prix + "</p>";
-				s+= "<p>" + element.allergies + "</p>";
-				s+= "<p>" + element.description + "</p>";
-				s+= "<p><a id =\"btnDetails\" href=\"#\" class=\"btn btn-default\" role=\"button\">Détails</a>";
+				s+= "<h3>" + data.name + "</h3>"
+				s+= "<p>" + data.prix + "</p>";
+				s+= "<p>" + data.allergies + "</p>";
+				s+= "<p>" + data.description + "</p>";
+				s+= "<p><a id =\"menus\" href=\"#\" class=\"btn btn-default\" role=\"button\">Retour</a>";
 				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
-
-				/*	
-				 s += "<tr><td>Nom : " + element.name + "</td><br /><td> Prix : " + element.prix + "</td><br /><td> Desctription du produit : " 
-					     + element.description + "</td><br /><td> Allergies : " + element.allergies + "</td><br /><td> Nous avons en stock " 
-					     + element.stock + " " + element.name+ "</td><br /><td>" 
-					     + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'></td> <br />"
-					     + "</tr><br />";
-
-				$("#zone").append("<tr><td> Nom : " + element.name + "<br />Prix : " + element.prix + "<br />Desctription du produit : " 
-					     + element.description + "<br />Allergies : " + element.allergies + "<br />Nous avons en stock " 
-					     + element.stock + " " + element.name+ "<br />" 
-					  //   + "<img src='http://www.supermarchesmatchdrive.fr/media/catalog/product/cache/1/image/300x/9df78eab33525d08d6e5fb8d27136e95/1/3/1365428_37901.jpg'> <br />"
-					     + "</tr></td>");*/
-			});
+			
+		
+		
 			s += "</div>";
 			$("#menusDetails").append(s);
 
