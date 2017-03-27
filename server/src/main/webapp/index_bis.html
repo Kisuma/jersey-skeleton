@@ -22,7 +22,7 @@
 		<div class="container">
 			<div class="page-header">
 				<!-- <h1>Bienvenue sur Mimoosa !</h1>-->
-				<a id="ongletAccueil" href="#"><img src="img/logo.jpg"
+				<a id="ongletPhotoAccueil" href="#"><img src="img/logo4.png"
 					alt="Logo de Mimoosa" /></a>
 				<h4 align="center" style="font-size: 3em">Egayer votre déjeuner</h4>
 
@@ -82,14 +82,33 @@
 	</nav>
 
 	<div id="contenu">
-		<div class="cache" id="accueil">
+		<div class="cache" id="pageAccueil" >
 
-			<a href="#"><img src="img/partenaire.jpg"></a>
+			<div style="height: 70%; width: 70%; float: left; margin-left: 2%;">
 
+				<a href="#"><img src="img/DelphineDoose.jpg" height="30%" width="30%"></a>
+			</div>
+			<div >
+				<p>
+					OUT les classiques "jambon/beurre" et lese box de pâtes
+					inductrielle façon chewing-gum !<br> Mimoosa casse la routine
+					et vous propose des plats VRAIMENT cuisinés, élaborés avec des
+					produits de saison, bio et autant que possible locaux(circuit
+					court).<br> <br> Pas de monotonie, 3 plats différents,
+					renouvelés chaque semaine.<br> <br> Tenté(e)(s) ?!!<br>
+					2 petites étapes à valider ...
 
+				</p>
+				<ul>
+					<li>Vérifiez que votre entreprise soit localisée sur la zone
+						de livraison</li>
+					<li>Créez votre compte client</li>
+				</ul>
+				<p>Go ! Vous pouvez commander !!!</p>
+			</div>
 		</div>
-		
-		
+
+
 		<div class="cache" id="menus"></div>
 		<div class="cache" id="menusDetails"></div>
 		<div class="cache" id="supplements">Contenu de la page des
@@ -275,7 +294,7 @@
 
 					<div class="col-sm-4 col-md-4">
 						<div class="thumbnail" style="text-align: center;">
-							<a href="#"><img src="img/partenaire2.jpg"></a>
+							<a href="#"><img src="img/fermeBio.jpg"></a>
 							<div class="caption">
 								<h1>Ferme Bio</h1>
 								<p>
@@ -389,7 +408,7 @@
 
 	<script type="text/javascript">
 		$('.cache').hide();
-		$('#accueil').show();
+		$('#pageAccueil').show();
 
 		$(document).ready(function() {
 			$("#zone").text("");
@@ -412,69 +431,67 @@
 				listerProduits("v1/produit")
 			});
 			 */
+			$("#ongletAccueil").click(function() {
+				$('.cache').hide();
+				$('#pageAccueil').show();
+			});
 
-		});
+			$("#ongletPhotoAccueil").click(function() {
+				$('.cache').hide();
+				$('#pageAccueil').show();
+			});
 
-		$("#ongletAccueil").click(function() {
-			$('.cache').hide();
-			$('#accueil').show();
-		});
-		$("#ongletMenus").click(function() {
-			$('.cache').hide();
-			$('#menus').show();
-			listerProduits("v1/produit")
-		});
-		/*
-		$("#ongletSupplements").click(function() {
-			$('.cache').hide();
-			$('#supplements').show();
-			listerSupplements("v1/produit")
-		});
-		 */
-		$("#ongletAllergenes").click(function() {
-			$('.cache').hide();
-			$('#allergenes').show();
-		});
+			$("#ongletMenus").click(function() {
+				$('.cache').hide();
+				$('#menus').show();
+				listerProduits("v1/produit")
+			});
 
-		$("#ongletAjoutProduit").click(function() {
-			$('.cache').hide();
-			$('#nouveauMenu').show();
-		});
-		$("#ongletInfosClient").click(function() {
-			$('.cache').hide();
-			$('#infosClients').show();
-		});
-		$("#ongletPanier").click(function() {
-			$('.cache').hide();
-			$('#panier').show();
-		});
-		$("#ongletHistorique").click(function() {
-			$('.cache').hide();
-			$('#historique').show();
-		});
-		$("#ongletCGV").click(function() {
-			$('.cache').hide();
-			$('#CGV').show();
-		});
-		$("#ongletInfos").click(function() {
-			$('.cache').hide();
-			$('#infos').show();
-		});
-		$("#ongletPartenaires").click(function() {
-			$('.cache').hide();
-			$('#partenaires').show();
-		});
-		$("#ongletCreationCompte").click(function() {
-			$('.cache').hide();
-			$('#creationCompte').show();
-		});
-		$("#ongletLogin").click(function() {
-			$('.cache').hide();
-			$('#login').show();
-		});
-		$("#btnCreerCompte").click(function() {
-			$('.cache').hide();
-			$('#creationCompte').show();
+			$("#ongletAllergenes").click(function() {
+				$('.cache').hide();
+				$('#allergenes').show();
+			});
+
+			$("#ongletAjoutProduit").click(function() {
+				$('.cache').hide();
+				$('#nouveauMenu').show();
+			});
+			$("#ongletInfosClient").click(function() {
+				$('.cache').hide();
+				$('#infosClients').show();
+			});
+			$("#ongletPanier").click(function() {
+				$('.cache').hide();
+				$('#panier').show();
+			});
+			$("#ongletHistorique").click(function() {
+				$('.cache').hide();
+				$('#historique').show();
+			});
+			$("#ongletCGV").click(function() {
+				$('.cache').hide();
+				$('#CGV').show();
+			});
+			$("#ongletInfos").click(function() {
+				$('.cache').hide();
+				$('#infos').show();
+			});
+			$("#ongletPartenaires").click(function() {
+				$('.cache').hide();
+				$('#partenaires').show();
+			});
+			$("#ongletCreationCompte").click(function() {
+				$('.cache').hide();
+				$('#creationCompte').show();
+			});
+			$("#ongletLogin").click(function() {
+				$('.cache').hide();
+				$('#login').show();
+			});
+			$("#btnCreerCompte").click(function() {
+				$('.cache').hide();
+				$('#creationCompte').show();
+			});
 		});
 	</script>
 </body>

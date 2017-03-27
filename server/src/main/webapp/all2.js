@@ -8,6 +8,7 @@ function inscrire(url) {
 		var mdp = $("#mdp").val();
 		var prenom = $("#prenom").val();
 		var mail = $("#mail").val();
+		var nomEnt = $("#nomEnt").val();
 
 
 
@@ -21,6 +22,7 @@ function inscrire(url) {
 				"mdp" : mdp,
 				"prenom" : prenom,
 				"mail" : mail,
+				"entreprise" : nomEnt,
 			}),
 			success : function(data) {
 				alert("Vous êtes bien inscrit.");
@@ -132,17 +134,17 @@ function listerProduits(url) {
 			var j = "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
 			data.forEach(function(element) {
 
-				s+= "<div class=\"row\" > <div class =\"col-sm-6 col-md-3\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
+				s+= "<div class =\"col-sm-4 col-md-4\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
 				s+= "<a href=\"#\" > <img src=\"" + j+ "\"></a>";
 				s+= "<div class=\"caption\">";
 				s+= "<h3>" + element.name + "</h3>"
-				s+= "<p>" + element.prix + "</p>";
+				s+= "<p>" + element.prix + "€</p>";
 				s+= "<p>" + element.allergies + "</p>";
 				s+= "<p><a id =\"btnDetails\" class=\"btn btn-default\" role=\"button\">Détails</a>";
-				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div></div>";
+				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
 
 			});
-			s += "</div>";
+			s += "</div></div>";
 			$("#menus").append(s);
 			
 			
