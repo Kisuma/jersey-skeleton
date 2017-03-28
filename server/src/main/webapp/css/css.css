@@ -6,6 +6,9 @@ p, ul, tbody, th{
     font-size:20px;
 }
 
+.listeclients{
+ font-size:20px;
+}
 .etoile{
     font-size:15px !important;
 }
