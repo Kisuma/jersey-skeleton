@@ -47,7 +47,7 @@
 								produit</a></li>
 					</ul></li>
 
-				<li class="dropdown"><a class="dropdown-toggle"
+				<li class="dropdown"id="menuClient"><a class="dropdown-toggle"
 					data-toggle="dropdown">Mon compte<b class="caret"></b>
 				</a>
 					<ul class="dropdown-menu">
@@ -325,15 +325,15 @@
 						<div class="col-md-2"></div>
 						<div class="col-md-4">
 							<div class="form-group">
-								<label class="control-label">Nom</label> <input id="nom"
+								<label class="control-label">Nom</label> <input id="nomInsc"
 									type="text" class="form-control" value="">
 							</div>
 							<div class="form-group">
 								<label class="control-label">Nom de l'entreprise</label> <input
-									id="nomEnt" type="text" class="form-control" value="">
+									id="nomEntInsc" type="text" class="form-control" value="">
 							</div>
 							<div class="form-group">
-								<label class="control-label">E-mail</label> <input id="mail"
+								<label class="control-label">E-mail</label> <input id="mailInsc"
 									type="email" class="form-control" value="">
 							</div>
 
@@ -342,20 +342,20 @@
 						<div class="col-md-4">
 
 							<div class="form-group">
-								<label class="control-label">Prenom</label> <input id="prenom"
+								<label class="control-label">Prenom</label> <input id="prenomInsc"
 									type="text" class="form-control" value="">
 							</div>
 							<div class="form-group">
-								<label class="control-label">Adresse</label> <input id="adresse"
+								<label class="control-label">Adresse</label> <input id="adresseInsc"
 									type="text" class="form-control" value="">
 							</div>
 							<div class="form-group">
 								<label class="control-label">Mot de passe</label> <input
-									id="mdp" type="password" class="form-control" value="">
+									id="mdpInsc" type="password" class="form-control" value="">
 							</div>
 							<div class="form-group">
 								<label class="control-label">Confirmez le mot de passe</label> <input
-									id="mdp2" type="password" class="form-control" value="">
+									id="mdp2Insc" type="password" class="form-control" value="">
 							</div>
 
 						</div>
@@ -384,12 +384,12 @@
 						<form id="loginForm">
 							<div class="form-group">
 								<label for="login" class="control-label">E-mail</label> <input
-									type="text" class="form-control" id="loginUser" name="login"
+									type="text" class="form-control" id="loginUserCon" name="login"
 									value="">
 							</div>
 							<div class="form-group">
 								<label for="password" class="control-label">Mot de passe</label>
-								<input type="password" class="form-control" id="password"
+								<input type="password" class="form-control" id="passwordCon"
 									name="mdp" value="">
 							</div>
 
@@ -408,10 +408,13 @@
 
 	<script type="text/javascript">
 		$('.cache').hide();
-		$('#pageAccueil').show();
+		$('#pageAccueil').show();	
+
+		
 
 		$(document).ready(function() {
 			$("#zone").text("");
+			
 			$("#btnAjoutPdt").click(function() {
 				ajoutProduit("v1/produit")
 			});
@@ -419,9 +422,9 @@
 				inscrire("v1/utilisateur")
 			});
 			$("#btnConnexion").click(function() {
-				connexion("v1/user")
-				alert("ok");
-				$("#zone").show();
+				connexion("v1/secure/who")
+
+				
 			});
 			$("#btnListerClients").click(function() {
 				listerUsers("v1/utilisateur")

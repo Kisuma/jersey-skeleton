@@ -1,14 +1,14 @@
 function inscrire(url) {
-	if($("#nom").val().length>0 && $("#adresse").val().length>0 && $("#mdp").val().length>0 && $("#prenom").val().length>0 && 
-			$("#mail").val().length>0 && $("#mdp2").val().length>0) {
+	if($("#nomInsc").val().length>0 && $("#adresseInsc").val().length>0 && $("#mdpInsc").val().length>0 && $("#prenomInsc").val().length>0 && 
+			$("#mailInsc").val().length>0 && $("#mdp2Insc").val().length>0 && $("#nomEntInsc").val().length>0) {
 
 
-		var name = $("#nom").val();
-		var adresse = $("#adresse").val();
-		var mdp = $("#mdp").val();
-		var prenom = $("#prenom").val();
-		var mail = $("#mail").val();
-		var nomEnt = $("#nomEnt").val();
+		var name = $("#nomInsc").val();
+		var adresse = $("#adresseInsc").val();
+		var mdp = $("#mdpInsc").val();
+		var prenom = $("#prenomInsc").val();
+		var mail = $("#mailInsc").val();
+		var nomEnt = $("#nomEntInsc").val();
 
 
 
@@ -18,14 +18,14 @@ function inscrire(url) {
 			contentType : "application/json",
 			data : JSON.stringify({
 				"nom" : name,
-				"adresse" : adresse,
-				"mdp" : mdp,
+				"address" : adresse,
+				"passwdHash" : mdp,
 				"prenom" : prenom,
-				"mail" : mail,
+				"email" : mail,
 				"entreprise" : nomEnt,
 			}),
 			success : function(data) {
-				alert("Vous êtes bien inscrit.");
+				alert("Vous êtes bien inscrit. Vous pouvez maintenant vous connecter");
 
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
@@ -40,21 +40,26 @@ function inscrire(url) {
 
 
 function connexion(url) {
-	if($("#loginUser").val().length>0 ) {
-		var nameConnexion = $("#login").val();
+	
+	if($("#loginUserCon").val().length>0 && $("#passwordCon").val().length>0) {
+		//var nameConnexion = $("#login").val();
 
 		$.ajax({
 			type : "GET",
-			url : "v1/user",
-			success : function(data) {
-				$("#zone").text("");
-				data.forEach(function(element) {
-					$("#zone").append(element.name + "<br />");
-				});
-
+			url : url,
+			datatype: 'json',
+			beforeSend: function(req) {
+				const s = btoa($("#loginUserCon").val() + ":" + $("#passwordCon").val());
+				req.setRequestHeader("Authorization","Basic "+s);
 			},
+			success : function(data) {
+				alert("Vous êtes maintenant connecté");
+				
+				},
+
+			
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('error: ' + textStatus);
+				alert("Erreur : veuillez réessayer ou vous inscrire");
 			}
 		});
 
