@@ -145,7 +145,8 @@ function listerProduits(url) {
 				s+= "<h3>" + element.name + "</h3>"
 				s+= "<p>" + element.prix + "€</p>";
 				s+= "<p>" + element.allergies + "</p>";
-				s+= "<p><a id =\"btnDetails\" class=\"btn btn-default\" role=\"button\">Détails</a>";
+				s+= "<p>" + element.description + "</p>";
+				//s+= "<p><a id =\"btnDetails\" class=\"btn btn-default\" role=\"button\">Détails</a>";
 				s+= "<a href=\"#\" class=\"btn btn-primary\" role=\"button\">Ajouter</a></p></div></div></div>";
 
 			});
@@ -169,7 +170,7 @@ function listerProduits(url) {
 		
 	});
 }
-
+/*
 function listerDetailsProduits(url) {
 	$("#menusDetails").text("chargement...");
 	
@@ -202,4 +203,4 @@ function listerDetailsProduits(url) {
 			alert('error: ' + textStatus);
 		}
 	});
-}
+}*/
