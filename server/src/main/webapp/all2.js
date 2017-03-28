@@ -109,15 +109,15 @@ function ajoutProduit(url){
 }
 
 function listerUsers(url) {
-	$("#listeClients").text("chargement...");
+	$("#listerClients").text("chargement...");
 
 	$.ajax({
 		type : "GET",
 		url : url,
 		success : function(data) {
-			$("#listeClients").text("");
+			$("#listerClients").text("");
 			data.forEach(function(element) {
-				$("#listeClients").append(element.nom + "<br />");
+				$("#listerClients").append(element.nom + "<br />");
 			});
 
 		},
