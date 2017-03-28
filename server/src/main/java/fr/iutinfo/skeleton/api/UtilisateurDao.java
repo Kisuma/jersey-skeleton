@@ -39,6 +39,10 @@ public interface UtilisateurDao {
     @SqlQuery("select * from utilisateurs where iduser = :iduser")
     @RegisterMapperFactory(BeanMapperFactory.class)
     Utilisateur findByID(@Bind("iduser") int iduser);
+    
+    @SqlQuery("select * from utilisateurs where mail = :email AND passwdHash = :password")
+    @RegisterMapperFactory(BeanMapperFactory.class)
+    Utilisateur connect(@BindBean() Utilisateur user);
 
     void close();
 }
