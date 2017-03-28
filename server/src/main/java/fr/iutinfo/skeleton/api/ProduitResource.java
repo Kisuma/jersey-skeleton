@@ -26,7 +26,7 @@ public class ProduitResource {
             dao.createProduitTable();
         } else {        	
         	if(dao.all().isEmpty()) {
-                dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en."));
+              //  dao.insert(new Produit(0, "Boeuf Bourguignon", "C'est très bon, mangez-en.",));
         	}
         }
     }
