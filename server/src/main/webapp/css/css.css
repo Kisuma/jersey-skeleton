@@ -2,9 +2,21 @@ body{
     font-family:"cinnamon";
 }
 
+p, ul, tbody, th{
+    font-size:20px;
+}
 
+.etoile{
+    font-size:15px !important;
+}
+.table{
+    margin-left:4% !important;
+}
+.h1Allergenes, .pAllergenes{
+    margin-left:2% !important;
+}
 .dropdown-menu{
-   font-size:1em;
+    font-size:1em;
 }
 .navbar-collapse{
     text-align:center;
