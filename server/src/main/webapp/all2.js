@@ -29,7 +29,7 @@ function inscrire(url) {
 
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('error: ' + textStatus);
+				console.log('error inscrire: ' + textStatus);
 			}
 		});
 	} else {
@@ -59,7 +59,7 @@ function connexion(url) {
 
 			
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert("Erreur : veuillez réessayer ou vous inscrire");
+				console.log('error connexion: ' + textStatus);
 			}
 		});
 
@@ -99,7 +99,7 @@ function ajoutProduit(url){
 
 			},
 			error : function(jqXHR, textStatus, errorThrown) {
-				alert('error: ' + textStatus);
+				console.log('error ajout produit: ' + textStatus);
 			}
 		});
 
@@ -122,7 +122,7 @@ function listerUsers(url) {
 
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('error: ' + textStatus);
+			console.log('error lister users: ' + textStatus);
 		}
 	});
 }
@@ -170,7 +170,7 @@ function listerProduits(url) {
 
 		},
 		error : function(jqXHR, textStatus, errorThrown) {
-			alert('error: ' + textStatus);
+			console.log('error lister produits: ' + textStatus);
 		}
 		
 		
