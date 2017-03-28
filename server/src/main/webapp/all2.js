@@ -109,15 +109,15 @@ function ajoutProduit(url){
 }
 
 function listerUsers(url) {
-	$("#zone").text("chargement...");
+	$("#listeClients").text("chargement...");
 
 	$.ajax({
 		type : "GET",
 		url : url,
 		success : function(data) {
-			$("#zone").text("");
+			$("#listeClients").text("");
 			data.forEach(function(element) {
-				$("#zone").append(element.nom + "<br />");
+				$("#listeClients").append(element.nom + "<br />");
 			});
 
 		},
@@ -135,12 +135,19 @@ function listerProduits(url) {
 		url : url,
 		success : function(data) {
 			$("#menus").text("");
+			console.log(data);
 			var s = "<h1 style=\"margin-left:60px;\"> Les Menus et les suppléments</h1><div id=\"MainContainer\" class=\"container-fluid\" style=\"margin-top:60px;\" ><div class=\"row\" >";
-			var j = "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
+			//var j = "http://today.wecook.fr/wp-content/uploads/2014/04/salade-color%C3%A9e.jpg";
 			data.forEach(function(element) {
-
+				console.log(element);
+				var str = element.pathImage;
+				console.log(str);
+				var tab = str.split("\\");
+				var url = tab[tab.length-1];
+				console.log(tab);
+				console.log(url);
 				s+= "<div class =\"col-sm-4 col-md-4\"> <div class=\"thumbnail\" style=\"text-align:center;\">";
-				s+= "<a href=\"#\" > <img src=\"" + j+ "\"></a>";
+				s+= "<a href='#' > <img src='img/" + url+ "'></a>";
 				s+= "<div class=\"caption\">";
 				s+= "<h3>" + element.name + "</h3>"
 				s+= "<p>" + element.prix + "€</p>";
